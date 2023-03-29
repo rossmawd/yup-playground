@@ -43,9 +43,10 @@ const MyForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form  onSubmit={handleSubmit}>
+        <div  className="container" > 
       <label>
-        First Name:
+        First Name:{' '}
         <input
           type="text"
           name="firstName"
@@ -53,8 +54,9 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+      {errorMessage("email is required")}
       <label>
-        Last Name:
+        Last Name:{' '}
         <input
           type="text"
           name="lastName"
@@ -62,8 +64,9 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
+      {errorMessage("email is required")}
       <label>
-        Email:
+        Email:{' '}
         <input
           type="email"
           name="email"
@@ -71,10 +74,17 @@ const MyForm = () => {
           onChange={handleChange}
         />
       </label>
-      <button type="submit">Submit</button>
+      {errorMessage("email is required")}
+      <button className="submit" type="submit">Submit</button>
         {success && <p>Success!</p>}
+        </div>
     </form>
   );
 };
+
+const errorMessage = (message: string) => <div className="error-message">
+<span className="icon">&times;</span>
+<span className="text">{message}</span>
+</div>
 
 export default MyForm;
